@@ -21,8 +21,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/myroom
     username: root
-    password: password
-
+    password: 
   jpa:
     show-sql: true
     hibernate:

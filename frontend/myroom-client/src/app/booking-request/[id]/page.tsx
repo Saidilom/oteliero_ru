@@ -53,8 +53,8 @@ export default function Room({
           setCurrentStep(2);
         }
       })
-      .catch((error) => {
-        notFound();
+      .catch((_error) => {
+        setBookingRequestData(null);
       });
   }, [bookingRequestId]);
 

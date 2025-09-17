@@ -1,5 +1,7 @@
+'use client';
+
+import React from "react";
 import bookingService from "@/services/myRoom/booking/bookingService";
-import { notFound } from "next/navigation";
 import { LoginOutlined, LogoutOutlined } from "@ant-design/icons";
 import { bookings } from "@/typings";
 import BookingStatus from "@/components/Booking/BookingStatus/BookingStatus";
@@ -10,31 +12,37 @@ import BookingDetailsCard from "@/components/Booking/BookingDetailsCard/BookingD
 import BookingExtraDetailsList from "@/components/Booking/BookingExtraDetailsList/BookingExtraDetailsList";
 import "./booking.css";
 
-async function fetchBooking(
-  id: string
-): Promise<bookings.IBookingData | undefined> {
-  try {
-    const data = await bookingService.getBookingDataById(id);
-    return data.data;
-  } catch (error: any) {
-    return undefined;
-  }
-}
-
-export default async function Booking({
+export default function Booking({
   params,
 }: {
   params: {
     id: string;
   };
 }) {
-  const booking: bookings.IBookingData | undefined = await fetchBooking(
-    params.id
-  );
+	const [booking, setBooking] = React.useState<bookings.IBookingData | null>(null);
+	const [loaded, setLoaded] = React.useState<boolean>(false);
 
-  if (!booking) {
-    notFound();
-  }
+	React.useEffect(() => {
+		let mounted = true;
+		bookingService
+			.getBookingDataById(params.id)
+			.then((res) => {
+				const data = (res?.data && typeof res.data === 'object' && 'data' in res.data) ? (res.data as any).data : res.data;
+				if (mounted) setBooking(data as bookings.IBookingData);
+			})
+			.catch(() => {
+				if (mounted) setBooking(null);
+			})
+			.finally(() => {
+				if (mounted) setLoaded(true);
+			});
+		return () => {
+			mounted = false;
+		};
+	}, [params.id]);
+
+	if (!loaded) return null;
+	if (!booking) return null;
 
   return (
     <div className="bookingData">

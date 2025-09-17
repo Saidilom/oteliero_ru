@@ -1,0 +1,58 @@
+{"level":"info","message":"Trying to connect MongoDB...","service":"room-service"}
+{"level":"info","message":"Successfully connected to MongoDB","service":"room-service"}
+{"level":"info","message":"organization-service is running at http://localhost:8085","service":"room-service"}
+{"level":"info","message":"Received get organization data request","service":"room-service"}
+{"level":"info","message":"Getting organization for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"level":"info","message":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"description":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","errorCode":"RECORD_NOT_FOUND","level":"error","message":"Error occured while fetching organization data:  couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","name":"AppError","service":"room-service","status":404}
+{"level":"info","message":"Received get organization data request","service":"room-service"}
+{"level":"info","message":"Getting organization for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"level":"info","message":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"description":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","errorCode":"RECORD_NOT_FOUND","level":"error","message":"Error occured while fetching organization data:  couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","name":"AppError","service":"room-service","status":404}
+{"level":"info","message":"Received get organization data request","service":"room-service"}
+{"level":"info","message":"Getting organization for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"level":"info","message":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"description":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","errorCode":"RECORD_NOT_FOUND","level":"error","message":"Error occured while fetching organization data:  couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","name":"AppError","service":"room-service","status":404}
+{"level":"info","message":"Received get organization data request","service":"room-service"}
+{"level":"info","message":"Getting organization for userId: 0mRFuTQkRZUlD0wp362oBOVgJum2","service":"room-service"}
+{"level":"info","message":"couldn't find any organizaton for userId: 0mRFuTQkRZUlD0wp362oBOVgJum2","service":"room-service"}
+{"description":"couldn't find any organizaton for userId: 0mRFuTQkRZUlD0wp362oBOVgJum2","errorCode":"RECORD_NOT_FOUND","level":"error","message":"Error occured while fetching organization data:  couldn't find any organizaton for userId: 0mRFuTQkRZUlD0wp362oBOVgJum2","name":"AppError","service":"room-service","status":404}
+{"level":"info","message":"Received get organization data request","service":"room-service"}
+{"level":"info","message":"Getting organization for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"level":"info","message":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"description":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","errorCode":"RECORD_NOT_FOUND","level":"error","message":"Error occured while fetching organization data:  couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","name":"AppError","service":"room-service","status":404}
+{"level":"info","message":"Received get organization data request","service":"room-service"}
+{"level":"info","message":"Getting organization for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"level":"info","message":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"description":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","errorCode":"RECORD_NOT_FOUND","level":"error","message":"Error occured while fetching organization data:  couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","name":"AppError","service":"room-service","status":404}
+{"level":"info","message":"Received get organization data request","service":"room-service"}
+{"level":"info","message":"Getting organization for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"level":"info","message":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"description":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","errorCode":"RECORD_NOT_FOUND","level":"error","message":"Error occured while fetching organization data:  couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","name":"AppError","service":"room-service","status":404}
+{"level":"info","message":"Received get organization data request","service":"room-service"}
+{"level":"info","message":"Getting organization for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"level":"info","message":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"description":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","errorCode":"RECORD_NOT_FOUND","level":"error","message":"Error occured while fetching organization data:  couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","name":"AppError","service":"room-service","status":404}
+{"level":"info","message":"Trying to connect MongoDB...","service":"room-service"}
+{"level":"info","message":"Successfully connected to MongoDB","service":"room-service"}
+{"level":"info","message":"organization-service is running at http://localhost:8085","service":"room-service"}
+{"level":"info","message":"Received get organization data request","service":"room-service"}
+{"level":"info","message":"Getting organization for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"level":"info","message":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"description":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","errorCode":"RECORD_NOT_FOUND","level":"error","message":"Error occured while fetching organization data:  couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","name":"AppError","service":"room-service","status":404}
+{"level":"info","message":"Received get organization data request","service":"room-service"}
+{"level":"info","message":"Getting organization for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"level":"info","message":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"description":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","errorCode":"RECORD_NOT_FOUND","level":"error","message":"Error occured while fetching organization data:  couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","name":"AppError","service":"room-service","status":404}
+{"level":"info","message":"Received get organization data request","service":"room-service"}
+{"level":"info","message":"Getting organization for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"level":"info","message":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"description":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","errorCode":"RECORD_NOT_FOUND","level":"error","message":"Error occured while fetching organization data:  couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","name":"AppError","service":"room-service","status":404}
+{"level":"info","message":"Received get organization data request","service":"room-service"}
+{"level":"info","message":"Getting organization for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"level":"info","message":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"description":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","errorCode":"RECORD_NOT_FOUND","level":"error","message":"Error occured while fetching organization data:  couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","name":"AppError","service":"room-service","status":404}
+{"level":"info","message":"Received get organization data request","service":"room-service"}
+{"level":"info","message":"Getting organization for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"level":"info","message":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","service":"room-service"}
+{"description":"couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","errorCode":"RECORD_NOT_FOUND","level":"error","message":"Error occured while fetching organization data:  couldn't find any organizaton for userId: Gu4DteA8Nwau1SL11LG6HTGyn892","name":"AppError","service":"room-service","status":404}

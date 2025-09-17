@@ -50,7 +50,7 @@ spring:
           predicates:
             - Path=/api/v1/organization-service/**
           filters:
-            - AuthenticationFilter
+            - AuthenticationFilter  # Закомментируйте эту строку
 
         - id: ONBOARDING-SERVICE
           uri: lb://ONBOARDING-SERVICE

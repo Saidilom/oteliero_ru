@@ -54,8 +54,8 @@ export default function Room({
       .then((data) => {
         setRoom(data);
       })
-      .catch((error: any) => {
-        notFound();
+      .catch((_error: any) => {
+        setRoom(null);
       });
   }, [id]);
 
