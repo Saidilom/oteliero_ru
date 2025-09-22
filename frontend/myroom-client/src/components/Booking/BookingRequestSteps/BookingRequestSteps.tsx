@@ -29,7 +29,7 @@ export default function BookingRequestSteps({
 }: {
   bookingRequestData: bookings.IBookingRequestData;
   setBookingRequestData: React.Dispatch<
-    React.SetStateAction<bookings.IBookingRequestData>
+    React.SetStateAction<bookings.IBookingRequestData | null>
   >;
   user: User;
   currentStep: number;
@@ -120,7 +120,7 @@ function GuestDetailsStep({
 }: {
   bookingRequestData: bookings.IBookingRequestData;
   setBookingRequestData: React.Dispatch<
-    React.SetStateAction<bookings.IBookingRequestData>
+    React.SetStateAction<bookings.IBookingRequestData | null>
   >;
   user: User;
   prev: () => void;
@@ -129,8 +129,8 @@ function GuestDetailsStep({
   error: (message: string) => void;
   warning: (message: string) => void;
 }): JSX.Element {
-  const [fullName, setFullName] = useState<string>(user.displayName);
-  const [emailId, setEmailId] = useState<string>(user.email);
+  const [fullName, setFullName] = useState<string>(user.displayName || "");
+  const [emailId, setEmailId] = useState<string>(user.email || "");
   const [phoneNumber, setPhoneNumber] = useState<string>(
     bookingRequestData.contactDetails !== null
       ? bookingRequestData.contactDetails?.phoneNumber
@@ -172,11 +172,11 @@ function GuestDetailsStep({
     <div>
       <Form style={{ maxWidth: 600 }} onFinish={onUpdateContactDetails}>
         <Form.Item name={"fullName"} label="Full Name">
-          <Input defaultValue={user.displayName} disabled={true} />
+          <Input defaultValue={user.displayName || ""} disabled={true} />
         </Form.Item>
 
         <Form.Item name={"email"} label="Email">
-          <Input defaultValue={user.email} disabled={true} />
+          <Input defaultValue={user.email || ""} disabled={true} />
         </Form.Item>
 
         <Form.Item
@@ -296,7 +296,7 @@ function PaymentStep({
             the hotel. No upfront payment required. Experience flexibility with
             your payment and enjoy the convenience of settling your bill in
             person during check-in or check-out. Please note that availability
-            of this option may vary depending on the hotel's policy.
+            of this option may vary depending on the hotel&apos;s policy.
           </>
         )}
       </div>
@@ -338,7 +338,7 @@ function BookingReceiptStep({
       .catch((err) => {
         error(err.response.data.message);
       });
-  }, [bookingRequestId]);
+  }, [bookingRequestId, error]);
 
   return (
     bookingData && (

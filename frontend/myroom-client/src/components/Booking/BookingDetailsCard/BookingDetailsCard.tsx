@@ -87,7 +87,7 @@ export default function BookingDetailsCard({
       return;
     }
     messageApi.open({
-      type: "Sending",
+      type: "loading",
       content: "Rate the booking experience",
     });
 
@@ -138,7 +138,7 @@ export default function BookingDetailsCard({
               <Rate onChange={(value) => setGivenRating(value)} />
               <Input
                 placeholder="Your comment"
-                value={comment}
+                value={comment ?? ""}
                 onChange={(e) => setComment(e.target.value)}
               />
             </div>

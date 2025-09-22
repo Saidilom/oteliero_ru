@@ -175,7 +175,7 @@ function Dates({
         new Date(searchParamDates.endDate.endDate),
       ]);
     }
-  }, [searchParam]);
+  }, [searchParam, setDates]);
 
   const range = (start: number, end: number) => {
     const result = [];

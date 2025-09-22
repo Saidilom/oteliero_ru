@@ -39,7 +39,7 @@ export default function Home() {
               securely.
             </p>
             <p>
-              Whether you're planning a business trip, a family vacation, or a
+              Whether you&apos;re planning a business trip, a family vacation, or a
               romantic getaway, MyRoom is your go-to destination for hassle-free
               hotel bookings.
             </p>

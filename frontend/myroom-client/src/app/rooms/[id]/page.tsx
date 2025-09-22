@@ -241,17 +241,17 @@ function BookingCard({
     }
 
     if (searchParam.get("adults")) {
-      setGuestsList({
-        ...guestsList,
+      setGuestsList((prevGuestsList) => ({
+        ...prevGuestsList,
         adults: Number(searchParam.get("adults")),
-      });
+      }));
     }
 
     if (searchParam.get("children")) {
-      setGuestsList({
-        ...guestsList,
+      setGuestsList((prevGuestsList) => ({
+        ...prevGuestsList,
         children: Number(searchParam.get("children")),
-      });
+      }));
     }
   }, [searchParam]);
 
@@ -290,7 +290,7 @@ function BookingCard({
     ]);
 
     router.push(pathname + "?" + query);
-  }, [dates, guestsList]);
+  }, [dates, guestsList, router, pathname, searchParam]);
 
   const onClickBookNow = () => {
     if (room && user) {

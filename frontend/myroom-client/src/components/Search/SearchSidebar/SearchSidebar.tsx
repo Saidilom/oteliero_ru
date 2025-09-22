@@ -427,7 +427,8 @@ function Features({
 
   useEffect(() => {
     if (searchParam.has("features")) {
-      let features = JSON.parse(searchParam.get("features"));
+      const raw = searchParam.get("features");
+      let features = raw ? JSON.parse(raw) : [];
       setSelectedValues(features);
     }
   }, [searchParam]);
