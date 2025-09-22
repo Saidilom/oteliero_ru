@@ -127,7 +127,7 @@ function Price({
             });
           }}
           onChangeComplete={(value) => {
-            const query = updateSearchParams(searchParam, {
+            const query = updateSearchParams(new URLSearchParams(searchParam.toString()), {
               cost: {
                 operator:
                   rooms.QueryRelationalOperatorEnum.GREATER_THAN_OR_EQUAL,
@@ -169,7 +169,7 @@ function Rating({
   const onChange = (value: number | null) => {
     let query = {};
     if (value) {
-      query = updateSearchParams(searchParam, {
+      query = updateSearchParams(new URLSearchParams(searchParam.toString()), {
         rating: {
           rating: {
             operator: rooms.QueryRelationalOperatorEnum.GREATER_THAN_OR_EQUAL,
@@ -302,7 +302,7 @@ function Amenities({
   ) => {
     let query: string = "";
     if (value.length > 0) {
-      query = updateSearchParams(searchParam, {
+      query = updateSearchParams(new URLSearchParams(searchParam.toString()), {
         amenities: value,
       });
     } else {
@@ -415,7 +415,7 @@ function Features({
   ) => {
     let query: string = "";
     if (value.length > 0) {
-      query = updateSearchParams(searchParam, { features: value });
+      query = updateSearchParams(new URLSearchParams(searchParam.toString()), { features: value });
     } else {
       query = deleteKeyFromQueryString(searchParam, "features");
     }
