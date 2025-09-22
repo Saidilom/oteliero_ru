@@ -8,7 +8,7 @@ import BookingStatus from "@/components/Booking/BookingStatus/BookingStatus";
 import { formatShortDate } from "@/utils/utils";
 import BookingGuests from "@/components/Booking/BookingGuests/BookingGuests";
 import BookingContactDetailsCard from "@/components/Booking/BookingContactDetailsCard/BookingContactDetailsCard";
-import BookingDetailsCard from "@/components/Booking/BookingDetailsCard/BookingDetailsCard";
+import BookingDetailsCard from "../../../components/Booking/BookingDetailsCard/BookingDetailsCard";
 import BookingExtraDetailsList from "@/components/Booking/BookingExtraDetailsList/BookingExtraDetailsList";
 import "./booking.css";
 

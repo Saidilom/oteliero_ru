@@ -1,4 +1,4 @@
-import Searchbox from "@/components/TopMenubar/Searchbox";
+import Searchbox from "../components/TopMenubar/Searchbox";
 import Image from "next/image";
 import "./page.css";
 

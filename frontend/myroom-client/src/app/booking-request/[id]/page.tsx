@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import BookingRequestSteps from "@/components/Booking/BookingRequestSteps/BookingRequestSteps";
+import BookingRequestSteps from "../../../components/Booking/BookingRequestSteps/BookingRequestSteps";
 import { bookings } from "@/typings";
 import { FileDoneOutlined, UserOutlined } from "@ant-design/icons";
 import { BsStripe } from "react-icons/bs";

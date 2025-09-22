@@ -1,7 +1,7 @@
 "use client";
 import React, { Suspense } from "react";
 import { MagnifyingGlass } from "react-loader-spinner";
-import SearchSidebar from "@/components/Search/SearchSidebar/SearchSidebar";
+import SearchSidebar from "../../components/Search/SearchSidebar/SearchSidebar";
 import "./search.css";
 
 export default function SearchLayout({
