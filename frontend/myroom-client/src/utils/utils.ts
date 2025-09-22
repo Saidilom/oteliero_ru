@@ -14,23 +14,31 @@ export function formatShortDate(date: Date): string {
 }
 
 export function addValueToQueryString(
-  searchParam: ReadonlyURLSearchParams,
+  searchParam: ReadonlyURLSearchParams | URLSearchParams,
   name: string,
   value: string
 ) {
-  const params = new URLSearchParams(searchParam);
+  const params = new URLSearchParams(
+    typeof (searchParam as any).toString === "function"
+      ? (searchParam as any).toString()
+      : String(searchParam)
+  );
   params.set(name, value);
   return params.toString();
 }
 
 export function addValuesToQueryString(
-  searchParam: ReadonlyURLSearchParams,
+  searchParam: ReadonlyURLSearchParams | URLSearchParams,
   values: {
     key: string;
     value: string;
   }[]
 ) {
-  const params = new URLSearchParams(searchParam);
+  const params = new URLSearchParams(
+    typeof (searchParam as any).toString === "function"
+      ? (searchParam as any).toString()
+      : String(searchParam)
+  );
   values.forEach((value) => {
     params.set(value.key, value.value);
   });
@@ -38,10 +46,14 @@ export function addValuesToQueryString(
 }
 
 export function deleteKeyFromQueryString(
-  searchParam: ReadonlyURLSearchParams,
+  searchParam: ReadonlyURLSearchParams | URLSearchParams,
   key: string
 ) {
-  const params = new URLSearchParams(searchParam);
+  const params = new URLSearchParams(
+    typeof (searchParam as any).toString === "function"
+      ? (searchParam as any).toString()
+      : String(searchParam)
+  );
   if (params.has(key)) {
     params.delete(key);
   }
@@ -69,12 +81,18 @@ export interface SearchParams {
 }
 
 export function updateSearchParams(
-  searchParams: URLSearchParams,
+  searchParams: ReadonlyURLSearchParams | URLSearchParams,
   updates: Partial<SearchParams>
 ): string {
   const currentParams: SearchParams = {};
 
-  searchParams.forEach((value, key) => {
+  const inputParams = new URLSearchParams(
+    typeof (searchParams as any).toString === "function"
+      ? (searchParams as any).toString()
+      : String(searchParams)
+  );
+
+  inputParams.forEach((value, key) => {
     if (key === "cost") {
       currentParams.cost = JSON.parse(decodeURIComponent(value));
     } else if (key === "city") {
@@ -94,7 +112,7 @@ export function updateSearchParams(
 
   for (const [key, value] of Object.entries(updatedParams)) {
     if (key === "city") {
-      updatedSearch.append(key, value);
+      updatedSearch.append(key, value as string);
     } else {
       updatedSearch.append(key, JSON.stringify(value));
     }
