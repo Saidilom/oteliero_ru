@@ -9,7 +9,7 @@ import { useSearchParams } from "next/navigation";
 
 function SearchRoomItem({ room }: { room: rooms.IRoomData }) {
   const searchParam = useSearchParams();
-  const urlSearchParamsString = new URLSearchParams(searchParam).toString();
+  const urlSearchParamsString = searchParam.toString();
 
   return (
     <Link href={`/rooms/${room.id}?${urlSearchParamsString}`} target="_blank">
