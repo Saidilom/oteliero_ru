@@ -97,7 +97,7 @@ function CheckInAndCheckOut({
         console.log(error);
         error(err.message);
       });
-  }, [organization.id]);
+  }, [organization.id, error]);
 
   const [data, setDate] = useState<bookings.IGetBookingCount | null>(null);
 

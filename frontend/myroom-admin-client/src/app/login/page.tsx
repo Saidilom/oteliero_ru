@@ -30,7 +30,7 @@ export default function Login() {
     if (user) {
       router.push("/onboarding");
     }
-  }, [user]);
+  }, [user, router]);
 
   return (
     <div className="login">

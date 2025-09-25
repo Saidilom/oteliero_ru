@@ -150,7 +150,7 @@ const OrganizationAccount = ({
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [organization.id]);
 
   const onActivateAccount = (accountId: string) => {
     setLoading(false);
@@ -171,6 +171,7 @@ const OrganizationAccount = ({
     organizationAccountDetails && (
       <OrganizationDescriptionCard
         title={"Organization Account Details"}
+        id={organization.id}
         description={
           <>
             <Descriptions title={null} items={organizationAccountDetailItems} />

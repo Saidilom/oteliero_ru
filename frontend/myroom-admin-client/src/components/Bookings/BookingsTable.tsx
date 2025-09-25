@@ -5,7 +5,7 @@ import {
   SearchOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import type { GetRef, TableColumnsType, TableColumnType } from "antd";
+import type { TableColumnsType, TableColumnType } from "antd";
 import {
   Avatar,
   Button,
@@ -25,18 +25,29 @@ import { formatShortDate } from "@/utils/utils";
 import Link from "next/link";
 import { bookings } from "@/typings";
 import { TablePaginationConfig, TableProps } from "antd/lib";
+import { useSearchParams } from "next/navigation";
+import { useUserAuth } from "@/firebase/auth/authProvider";
 import bookingService from "@/services/myRoom/booking/bookingService";
 
 interface DataType extends bookings.IBooking {}
 
-type InputRef = GetRef<typeof Input>;
+type InputRef = React.ComponentRef<typeof Input>;
 
 type DataIndex = keyof DataType;
 
 type GetSingle<T> = T extends (infer U)[] ? U : never;
-type Sorts = GetSingle<Parameters<OnChange>[2]>;
+type Sorts = Partial<SorterResult<DataType>>;
+
+interface TableParams {
+  pagination?: TablePaginationConfig;
+  sortField?: string;
+  sortOrder?: string;
+  filters?: Record<string, FilterValue>;
+}
 
 export default function BookingsTable() {
+  const searchParam = useSearchParams();
+  const { organization } = useUserAuth();
   const [toastApi, toastContextHolder] = notification.useNotification();
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
@@ -51,45 +62,17 @@ export default function BookingsTable() {
   });
   const [data, setData] = React.useState<bookings.IBookings | null>(null);
 
-  const fetchData = () => {
+  const fetchData = React.useCallback(() => {
     setLoading(true);
-    const query: bookings.IGetBookingsQuery = {};
-
-    if (tableParams.pagination) {
-      query.page = tableParams.pagination.current - 1;
-      query.size = tableParams.pagination.pageSize;
-    }
-
-    if (tableParams.order) {
-      const field = tableParams.field;
-      const order =
-        tableParams.order === "ascend"
-          ? bookings.SortingType.ASC
-          : bookings.SortingType.DESC;
-
-      if (field === "bookingDate") {
-        query.bookingDate = {
-          sortingType: order,
-        };
-      }
-
-      if (field === "checkInDate") {
-        query.checkInDate = {
-          sortingType: order,
-        };
-      }
-
-      if (field === "checkOutDate") {
-        query.checkOutDate = {
-          sortingType: order,
-        };
-      }
-    }
+    const query: bookings.IGetBookingsQuery = {
+      page: (tableParams.pagination?.current || 1) - 1,
+      size: tableParams.pagination?.pageSize,
+    };
 
     bookingService
       .getBookings(query)
       .then((data) => {
-        setData(data.data);
+        setData(data.data.content);
         setTableParams({
           ...tableParams,
           pagination: {
@@ -106,21 +89,21 @@ export default function BookingsTable() {
           icon: <InfoCircleOutlined style={{ color: "#108ee9" }} />,
         });
       });
-  };
+  }, [tableParams, toastApi]);
 
   useEffect(() => {
     fetchData();
-  }, [JSON.stringify(tableParams)]);
+  }, [fetchData]);
 
   const handleTableChange: TableProps<DataType>["onChange"] = (
-    pagination: TablePaginationConfig,
-    filters: Record<string, FilterValue>,
-    sorter: SorterResult<DataType>
+    pagination,
+    filters,
+    sorter
   ) => {
     setTableParams({
       pagination,
-      filters,
-      ...sorter,
+      filters: filters as Record<string, FilterValue>,
+      ...(sorter as SorterResult<DataType>),
     });
   };
 

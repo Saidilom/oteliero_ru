@@ -81,30 +81,25 @@ export default function ManageRoom() {
   }
 
   useEffect(() => {
-    if (type !== "Add Room") {
-      const fetchRoom = async () => {
+    if (id) {
+      const fetchRoom = () => {
         roomService
-          .getRoom(id!)
+          .getRoom(id)
           .then((data) => {
             const room: rooms.IRoomData = data.data;
             setTitle(room.title);
             setDescription(room.description);
-            setAvailableDates(room.availableDates);
             setCapacity(room.capacity);
-            setNote(room.note!);
+            setAmenities(room.amenities);
+            setFeatures(room.features);
             setBookingStatus(room.bookingStatus);
             setCheckInTypes(room.checkInTypes);
             setPrices(room.prices);
-            setAmenities(room.amenities);
-            setFeatures(room.features);
-            setCity(room.city);
-            setAddress(room.address);
-            setMainImage(room.mainImage);
+            setAvailableDates(room.availableDates);
           })
           .catch((error) => {
-            if (error.response && error.response.status === 404) {
-              notFound();
-            } else {
+            setLoading(false);
+            if (error && error.response && error.response.data && error.response.data.message) {
               toastApi.open({
                 message: "Error",
                 description: error.response.data.message,
@@ -115,7 +110,7 @@ export default function ManageRoom() {
       };
       fetchRoom();
     }
-  }, [id]);
+  }, [id, toastApi, type]);
 
   const onAdd = () => {
     setLoading(true);
@@ -399,7 +394,7 @@ function AvailableDates({
     <Form.Item label="AvailableDates" rules={[{ required: true }]}>
       <RangePicker
         onChange={(values) => {
-          if (values && values.length > 0) {
+          if (values && values[0] && values[1]) {
             setAvailableDates({
               startDate: values[0].toDate(),
               endDate: values[1].toDate(),
@@ -827,7 +822,7 @@ function MainImage({
     // }
 
     const formData = new FormData();
-    formData.append("key", process.env.NEXT_PUBLIC_IMGBB_API_KEY);
+    formData.append("key", process.env.NEXT_PUBLIC_IMGBB_API_KEY || "");
     formData.append("image", file);
 
     try {

@@ -1,8 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import {
-  Image as AntImage,
-  Avatar,
   Rate,
   Table,
   Tooltip,
@@ -14,12 +12,11 @@ import type {
   TablePaginationConfig,
 } from "antd/es/table";
 import type { FilterValue, SorterResult } from "antd/es/table/interface";
-import { bookings, rooms } from "@/typings";
-import type {} from "antd/es/table";
-import { InfoCircleOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { reviews } from "@/typings/reviews";
 import reviewService from "@/services/myRoom/review/reviewService";
+import { InfoCircleOutlined } from "@ant-design/icons";
+import { useUserAuth } from "@/firebase/auth/authProvider";
 import User from "./User/User";
 
 interface DataType extends reviews.IReviewData {}
@@ -92,6 +89,7 @@ interface TableParams {
 }
 
 export default function ReviewsTable() {
+  const { organization } = useUserAuth();
   const [toastApi, toastContextHolder] = notification.useNotification();
   const [loading, setLoading] = React.useState<boolean>(false);
   const [tableParams, setTableParams] = React.useState<TableParams>({
@@ -102,25 +100,19 @@ export default function ReviewsTable() {
   });
   const [data, setData] = React.useState<reviews.IReviewQueryData | null>(null);
 
-  const fetchData = () => {
+  const fetchData = React.useCallback(() => {
     setLoading(true);
-    const query: reviews.IGetReviewsQuery = {};
 
-    if (tableParams.pagination) {
-      query.page = tableParams.pagination.current;
-      query.limit = tableParams.pagination.pageSize;
+    if (!organization?.id) {
+      setLoading(false);
+      return;
     }
 
-    // if (tableParams.order) {
-    //   const field = tableParams.field;
-    //   const order = tableParams.order === "ascend" ? 1 : -1;
-    //   query.sorting = [
-    //     {
-    //       operator: order,
-    //       field: field,
-    //     },
-    //   ];
-    // }
+    const query: reviews.IGetReviewsQuery = {
+      organizationId: organization.id,
+      page: tableParams.pagination?.current,
+      limit: tableParams.pagination?.pageSize,
+    };
 
     reviewService
       .getReviews(query)
@@ -141,22 +133,23 @@ export default function ReviewsTable() {
           description: error.message,
           icon: <InfoCircleOutlined style={{ color: "#108ee9" }} />,
         });
+        setLoading(false);
       });
-  };
+  }, [organization?.id, tableParams, toastApi]);
 
   useEffect(() => {
     fetchData();
-  }, [JSON.stringify(tableParams)]);
+  }, [fetchData]);
 
   const handleTableChange: TableProps<DataType>["onChange"] = (
     pagination: TablePaginationConfig,
-    filters: Record<string, FilterValue>,
-    sorter: SorterResult<DataType>
+    filters: Record<string, FilterValue | null>,
+    sorter: SorterResult<DataType> | SorterResult<DataType>[],
   ) => {
     setTableParams({
       pagination,
-      filters,
-      ...sorter,
+      filters: filters as Record<string, FilterValue>,
+      ...(sorter as SorterResult<DataType>),
     });
   };
 
