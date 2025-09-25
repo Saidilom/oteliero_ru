@@ -1,6 +1,6 @@
 import React, { useMemo, useRef, useState } from "react";
 import debounce from "lodash/debounce";
-import { Select, Spin } from "antd";
+import { Select as AntSelect, Spin } from "antd";
 import type { SelectProps } from "antd/es/select";
 
 export interface DebounceSelectProps<ValueType = any>
@@ -46,7 +46,7 @@ function DebounceSelect<
   }, [fetchOptions, debounceTimeout]);
 
   return (
-    <Select
+    <AntSelect
       labelInValue
       filterOption={false}
       onSearch={debounceFetcher}
@@ -81,8 +81,4 @@ async function fetchUserList(username: string): Promise<UserValue[]> {
     );
 }
 
-function Select() {
-  return <div>Select</div>;
-}
-
-export default Select;
+export default DebounceSelect;

@@ -266,7 +266,7 @@ interface TableParams {
   pagination?: TablePaginationConfig;
   sortField?: string;
   sortOrder?: string;
-  filters?: Record<string, FilterValue>;
+  filters?: Record<string, FilterValue | null>;
 }
 
 export default function RoomsTableAnt() {
@@ -283,7 +283,7 @@ export default function RoomsTableAnt() {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const [data, setData] = React.useState<rooms.IQueryData | null>(null);
 
-  const fetchData = () => {
+  const fetchData = React.useCallback(() => {
     setLoading(true);
     const query: rooms.IGetRoomsQuery = {};
 
@@ -325,21 +325,28 @@ export default function RoomsTableAnt() {
           icon: <InfoCircleOutlined style={{ color: "#108ee9" }} />,
         });
       });
-  };
+  }, [organization?.id, tableParams, toastApi]);
 
   useEffect(() => {
     fetchData();
-  }, [JSON.stringify(tableParams)]);
+  }, [fetchData]);
 
   const handleTableChange: TableProps<DataType>["onChange"] = (
-    pagination: TablePaginationConfig,
-    filters: Record<string, FilterValue>,
-    sorter: SorterResult<DataType>
+    pagination,
+    filters,
+    sorter,
+    _extra
   ) => {
+    const isArraySorter = Array.isArray(sorter);
+    const firstSorter: SorterResult<DataType> | undefined = isArraySorter
+      ? sorter[0]
+      : (sorter as SorterResult<DataType>);
+
     setTableParams({
       pagination,
-      filters,
-      ...sorter,
+      filters: filters as Record<string, FilterValue | null>,
+      sortField: firstSorter?.field?.toString(),
+      sortOrder: firstSorter?.order ?? undefined,
     });
   };
 

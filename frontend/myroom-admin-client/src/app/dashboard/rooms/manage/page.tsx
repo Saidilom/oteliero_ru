@@ -82,9 +82,9 @@ export default function ManageRoom() {
 
   useEffect(() => {
     if (id) {
-      const fetchRoom = () => {
+      const fetchRoom = (roomId: string) => {
         roomService
-          .getRoom(id)
+          .getRoom(roomId)
           .then((data) => {
             const room: rooms.IRoomData = data.data;
             setTitle(room.title);
@@ -108,7 +108,7 @@ export default function ManageRoom() {
             }
           });
       };
-      fetchRoom();
+      fetchRoom(id);
     }
   }, [id, toastApi, type]);
 

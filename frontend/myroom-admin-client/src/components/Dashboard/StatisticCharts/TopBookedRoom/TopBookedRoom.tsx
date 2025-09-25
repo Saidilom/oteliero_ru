@@ -48,7 +48,7 @@ export default function TopBookedRoom({
               <RoomCard
                 key={data.id}
                 name={data.title}
-                count={data.bookingCount}
+                count={data.bookingCount ?? 0}
               />
             ))}
           </Space>

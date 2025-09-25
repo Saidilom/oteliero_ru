@@ -10,7 +10,7 @@ export default function AdminCard({
   type,
 }: {
   id: string;
-  type: organizations.IAdminType;
+  type?: organizations.IAdminType;
 }) {
   const [user, setUser] = useState<auth.IUser | null>(null);
 

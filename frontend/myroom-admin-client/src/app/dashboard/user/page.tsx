@@ -39,8 +39,8 @@ export default function User() {
         <div className="userDetails">
           <div className="image">
             <Image
-              src={user.photoURL}
-              alt={user.displayName}
+              src={user.photoURL ?? "/images/admin.jpg"}
+              alt={user.displayName ?? "User"}
               height={400}
               width={400}
               style={{ borderRadius: "20px" }}
